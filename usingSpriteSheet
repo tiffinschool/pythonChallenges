@@ -11,7 +11,7 @@ manFrame = Frame(0,0,96,96)
 manImage = ImageAsset("characterSheet96x96.png",manFrame,16,'horizontal',0)
 manSprite = Sprite(manImage,(100,100))
 runningRightIndexes = [2,3]
-lastTimeUsed = 0
+lastTimeMovedRight = 0
 
 ### bind event listeners
 #
@@ -19,10 +19,10 @@ lastTimeUsed = 0
 #USAGE - listenKeyEvent(eventtype, key, callback)
 
 def moveManRight(e):
-    global manSprite, lastTimeUsed
-    if (time.process_time() > lastTimeUsed + 0.1):
-        lastTimeUsed = time.process_time()
-        manSprite.x += 2
+    global manSprite, lastTimeMovedRight
+    if (time.process_time() > lastTimeMovedRight + 0.1):
+        lastTimeMovedRight = time.process_time()
+        manSprite.x += 5
         manSprite.index = nextIndex(runningRightIndexes, manSprite.index)
 
 def nextIndex(arr,elem):
@@ -37,7 +37,7 @@ def standStraightMan(e):
 App().listenKeyEvent("keydown","right arrow",moveManRight)
 App().listenKeyEvent("keyup","right arrow",standStraightMan)
  
-
+ 
 ### Challenges
 #
 # 1. add an event so that the man can also run left when you press the left key
