@@ -25,10 +25,10 @@ def moveManRight(e):
     if (time.process_time() > lastTimeMovedRight + 0.1):
         lastTimeMovedRight = time.process_time()
         manSprite.x += 5
-        manSprite.index = nextIndex(runningRightIndexes, manSprite.index)
+        manSprite.index = nextElement(runningRightIndexes, manSprite.index)
 
-#helper function
-def nextIndex(arr,elem):
+#helper function - returns next element within array relative to specified element
+def nextElement(arr,elem):
     if (elem in arr):
         return arr[(arr.index(elem)+1)%len(arr)]
     return arr[0]
