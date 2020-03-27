@@ -1,6 +1,6 @@
 from ggame import App
 from ggame import ImageAsset, Sprite, Frame
-
+import time
 
 ### create sprite from spritesheet
 #
@@ -10,6 +10,8 @@ from ggame import ImageAsset, Sprite, Frame
 manFrame = Frame(0,0,96,96)
 manImage = ImageAsset("characterSheet96x96.png",manFrame,16,'horizontal',0)
 manSprite = Sprite(manImage,(100,100))
+runningRightIndexes = [2,3]
+lastTimeUsed = 0
 
 ### bind event listeners
 #
@@ -17,15 +19,29 @@ manSprite = Sprite(manImage,(100,100))
 #USAGE - listenKeyEvent(eventtype, key, callback)
 
 def moveManRight(e):
-    global manSprite
-    manSprite.x += 1
-    nextImage(True)
+    global manSprite, lastTimeUsed
+    if (time.process_time() > lastTimeUsed + 0.1):
+        lastTimeUsed = time.process_time()
+        manSprite.x += 2
+        manSprite.index = nextIndex(runningRightIndexes, manSprite.index)
 
-### challenges
+def nextIndex(arr,elem):
+    if (elem in arr):
+        return arr[(arr.index(elem)+1)%len(arr)]
+    return arr[0]
+
+def standStraightMan(e):
+    global manSprite
+    manSprite.index = 0
+    
+App().listenKeyEvent("keydown","right arrow",moveManRight)
+App().listenKeyEvent("keyup","right arrow",standStraightMan)
+ 
+
+### Challenges
 #
 # 1. add an event so that the man can also run left when you press the left key
 # 2. when the man runs left the image needs to change so he is facing left
-#
+# 3. Change the man into gun cat using the gun cat spritesheet 
 
-App().listenKeyEvent("keydown","right arrow",moveManRight)
 App().run()
