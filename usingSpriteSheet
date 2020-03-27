@@ -1,1 +1,12 @@
-print()
+from ggame import App
+from ggame import ImageAsset, Sprite, Frame
+
+
+#https://ggame.readthedocs.io/en/latest/ggameapi.html#sprite
+#ImageAsset(url, frame=None, qty=1, direction='horizontal', margin=0)
+
+manFrame = Frame(0,0,32,36)
+manImage = ImageAsset("MainGuySpriteSheet.png",manFrame,2,'horizontal',15)
+manSprite = Sprite(manImage,(100,100))
+
+App().run()
