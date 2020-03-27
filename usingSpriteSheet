@@ -42,6 +42,7 @@ App().listenKeyEvent("keyup","right arrow",standStraightMan)
 #
 # 1. add an event so that the man can also run left when you press the left key
 # 2. when the man runs left the image needs to change so he is facing left
-# 3. Change the man into gun cat using the gun cat spritesheet 
+# 4. Change the man into gun cat using the gun cat spritesheet 
+
 
 App().run()
