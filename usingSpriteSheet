@@ -2,11 +2,18 @@ from ggame import App
 from ggame import ImageAsset, Sprite, Frame
 
 
-#https://ggame.readthedocs.io/en/latest/ggameapi.html#sprite
-#ImageAsset(url, frame=None, qty=1, direction='horizontal', margin=0)
+#create sprite from spritesheet
+#
+#URL - https://ggame.readthedocs.io/en/latest/ggameapi.html#sprite
+#USAGE - ImageAsset(url, frame=None, qty=1, direction='horizontal', margin=0)
 
-manFrame = Frame(0,0,32,36)
-manImage = ImageAsset("MainGuySpriteSheet.png",manFrame,2,'horizontal',15)
+manFrame = Frame(0,0,96,96)
+manImage = ImageAsset("characterSheet96x96.png",manFrame,8,'horizontal',0)
 manSprite = Sprite(manImage,(100,100))
+
+#bind event listeners
+#
+#URL - https://ggame.readthedocs.io/en/latest/ggameapi.html#ggame.asset.Frame
+#USAGE - listenKeyEvent(eventtype, key, callback)
 
 App().run()
