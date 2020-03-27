@@ -19,6 +19,7 @@ lastTimeMovedRight = 0
 #REFERENCE URL - https://ggame.readthedocs.io/en/latest/ggameapi.html#ggame.asset.Frame
 #USAGE - listenKeyEvent(eventtype, key, callback)
 
+#moves man right including animation
 def moveManRight(e):
     global manSprite, lastTimeMovedRight
     if (time.process_time() > lastTimeMovedRight + 0.1):
@@ -26,11 +27,13 @@ def moveManRight(e):
         manSprite.x += 5
         manSprite.index = nextIndex(runningRightIndexes, manSprite.index)
 
+#helper function
 def nextIndex(arr,elem):
     if (elem in arr):
         return arr[(arr.index(elem)+1)%len(arr)]
     return arr[0]
 
+#resets appearance to standing
 def standStraightMan(e):
     global manSprite
     manSprite.index = 0
@@ -42,8 +45,7 @@ App().listenKeyEvent("keyup","right arrow",standStraightMan)
 ### Challenges
 #
 # 1. add an event so that the man can also run left when you press the left key
-# 2. when the man runs left the image needs to change so he is facing left
-# 4. Change the man into gun cat using the ninja cat spritesheet 
+# 2. when the man runs left the appearance needs to change so he is facing left etc.
 
 
 App().run()
