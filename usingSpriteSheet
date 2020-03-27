@@ -2,18 +2,30 @@ from ggame import App
 from ggame import ImageAsset, Sprite, Frame
 
 
-#create sprite from spritesheet
+### create sprite from spritesheet
 #
 #URL - https://ggame.readthedocs.io/en/latest/ggameapi.html#sprite
 #USAGE - ImageAsset(url, frame=None, qty=1, direction='horizontal', margin=0)
 
 manFrame = Frame(0,0,96,96)
-manImage = ImageAsset("characterSheet96x96.png",manFrame,8,'horizontal',0)
+manImage = ImageAsset("characterSheet96x96.png",manFrame,16,'horizontal',0)
 manSprite = Sprite(manImage,(100,100))
 
-#bind event listeners
+### bind event listeners
 #
 #URL - https://ggame.readthedocs.io/en/latest/ggameapi.html#ggame.asset.Frame
 #USAGE - listenKeyEvent(eventtype, key, callback)
 
+def moveManRight(e):
+    global manSprite
+    manSprite.x += 1
+    nextImage(True)
+
+### challenges
+#
+# 1. add an event so that the man can also run left when you press the left key
+# 2. when the man runs left the image needs to change so he is facing left
+#
+
+App().listenKeyEvent("keydown","right arrow",moveManRight)
 App().run()
