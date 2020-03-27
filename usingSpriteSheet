@@ -46,6 +46,8 @@ App().listenKeyEvent("keyup","right arrow",standStraightMan)
 #
 # 1. add an event so that the man can also run left when you press the left key
 # 2. when the man runs left the appearance needs to change so he is facing left etc.
+# 3. replace the man spritesheet with the ninja cat spritesheet  which can be found here:
+# https://github.com/tiffinschool/pythonChallenges/blob/master/catSpriteSheet64x64.png
 
 
 App().run()
