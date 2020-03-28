@@ -22,9 +22,9 @@ lastTimeMovedRight = 0
 #moves man right including animation
 def moveManRight(e):
     global manSprite, lastTimeMovedRight
-    if (time.process_time() > lastTimeMovedRight + 0.1):
+    manSprite.x += 2
+    if (time.process_time() > lastTimeMovedRight + 0.1): #only update the appearance every 0.1 seconds
         lastTimeMovedRight = time.process_time()
-        manSprite.x += 5
         manSprite.index = nextElement(runningRightIndexes, manSprite.index)
 
 #helper function - returns next element within array relative to specified element
@@ -36,7 +36,7 @@ def nextElement(arr,elem):
 #resets appearance to standing
 def standStraightMan(e):
     global manSprite
-    manSprite.index = 0
+    manSprite.index = 0 #index = 0 is the standing appearance
     
 App().listenKeyEvent("keydown","right arrow",moveManRight)
 App().listenKeyEvent("keyup","right arrow",standStraightMan)
